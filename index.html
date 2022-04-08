@@ -1,0 +1,140 @@
+<! DOCTYPE html>
+<html lang="en">
+
+<cabeça>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="estilo.css">
+ <script tipo="texto/javascript" src="script.js" adiar></script>
+
+ <o título>Dio Dino Game</título>
+</cabeça>
+
+<corpo>
+    <div class="background">
+        <div class="dino"></div>
+    </div>
+
+
+
+</corpo>
+
+</html>
+const dino = documento. consultaSelector('.dino');
+fundo const  = documento. consultaSelector('.background');
+
+vamos éJumping = falso;
+let isGameOver = falso;
+deixar posição = 0;
+
+ manipulação de funçãoKeyUp(evento) { 
+ se (evento. keyCode === 32) {
+ se (! isJumping) {
+      saltar();
+    }
+  }
+}
+
+salto de função() {
+ isJumping = verdadeiro;
+
+ deixar upInterval = setInterval(() => {
+ se (posição >= 150) {
+      Descendo
+      clearInterval(upInterval);
+
+ desaponteInterval  = setInterval() => {
+ se (posição <= 0) {
+          clearInterval(downInterval);
+ isJumping = falso;
+        } mais {
+ posição -= 20;
+ dino, o que está por fazer. estilo. inferior = posição + 'px';
+        }
+      }, 20);
+    } mais {
+      Subindo
+ posição += 20;
+ dino, o que está por fazer. estilo. inferior = posição + 'px';
+    }
+  }, 20);
+}
+
+função createCactus() {
+ cacto const  = documento. criarElement('div');
+ deixar o cactusPosition = 1000;
+ deixar randomTime = Matemática. aleatório() * 6000;
+
+ se (isGameOver) retornar;
+
+ cacto. classList. adicionar('cacto');
+ fundo. apêndiceChild(cacto);
+ cacto. estilo. esquerda = cactusPosition + 'px';
+
+ deixe leftTimer = setInterval() => {
+ se (cactusPosition < -60) {
+      Saiu da tela
+ clearInterval (leftTimer);
+ fundo. removerChild(cactus);
+ } outra se (cactusPosition > 0 && cactusPosition < 60 && posição < 60) {
+      Fim de jogo
+ clearInterval (leftTimer);
+ isGameOver = verdadeiro;
+ documento. corpo. innerHTML = '<h1 class="game-over">Fim de jogo</h1>';
+    } mais {
+      cactusPosition -= 10;
+ cacto. estilo. esquerda = cactusPosition + 'px';
+    }
+  }, 20);
+
+ setTimeout (createCactus, randomTime);
+}
+
+criarCactus();
+documento. addEventListener('keyup', handleKeyUp);
+   corpo {
+ cor de fundo: #fafafa;
+}
+
+. dino {
+ largura: 60px;
+ altura: 60px;
+ imagem de fundo: url (img/dino.png);
+ posição: absoluta;
+ inferior: 0;
+}
+
+. cacto {
+ posição: absoluta;
+ largura: 60px;
+ altura: 60px;
+ inferior: 0;
+ imagem de fundo: url (img/cactus.png);
+}
+
+. game-over {
+ alinhamento de texto: centro;
+ cor: #666666;
+ margem-superior: 50px;
+ fonte-família: Arial;
+}
+
+slide @keyframes Reto {
+  de {
+ posição de fundo: 70000%;
+  }
+  para {
+ posição de fundo: 0;
+  }
+}
+
+. fundo {
+ posição: absoluta;
+ inferior: 0;
+ imagem de fundo: url (img/background.png);
+ plano de repetição de fundo: repetição-x;
+ animação: slideRight 600s infinite linear;
+ largura: 100%;;
+ altura: 200px;
+}
